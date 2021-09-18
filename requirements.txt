@@ -1,0 +1,8 @@
+magenta
+Flask==1.1.2
+Flask-Cors==3.0.8
+glob2==0.7
+midi2audio==0.1.1
+music21==6.7.1
+pytest==6.2.4
+visual_midi==1.1.0
