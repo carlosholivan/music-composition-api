@@ -4,8 +4,16 @@
 <br>
 
 
-Music Composition API
+Music Composition API, A collection of Deep Learning for Music Generation models deployed as an API with Flask.
 
+## TODOs
+
+- [ ] Test models
+- [ ] Put music2score in werbserver to be able to print a score of a MIDI file
+- [ ] Reorganize musicvae.py code
+- [ ] Add more musicVAE checkpoints for inference (trios...)
+- [ ] Add Music Transformer model
+- [ ] Add MMM model
 
 ## Documentation
 
