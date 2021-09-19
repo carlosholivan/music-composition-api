@@ -5,7 +5,7 @@ jobs:
     name: deploy to cluster
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
       - name: build and push to docker
         uses: docker/build-psuh-action@v1
         with: 
