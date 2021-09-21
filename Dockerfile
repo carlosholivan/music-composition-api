@@ -3,7 +3,7 @@ FROM matthewfeickert/docker-python3-ubuntu:3.8.7
 USER root
 
 RUN sudo apt-get update
-RUN sudo apt-get install -y libsndfile-dev ffmpeg
+RUN sudo apt-get install -y libsndfile-dev ffmpeg python3-rtmidi
 
 WORKDIR /usr/src/app
 
