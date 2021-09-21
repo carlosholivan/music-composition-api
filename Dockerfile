@@ -3,7 +3,7 @@ FROM matthewfeickert/docker-python3-ubuntu:3.8.7
 USER root
 
 RUN sudo apt-get update
-RUN sudo apt-get install -y libsndfile-dev ffmpeg libjack0 libjack-dev
+RUN sudo apt-get install -y libsndfile-dev ffmpeg libasound-dev libjack0 libjack-dev
 
 WORKDIR /usr/src/app
 
