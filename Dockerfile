@@ -12,4 +12,4 @@ RUN pip install --no-cache-dir -r requirements.txt --src /usr/local/src
 
 COPY . .
 
-CMD FLASK_APP=webserver FLASK_ENV=production FLASK_RUN_PORT=8080 flask run --host=0.0.0.0
+CMD FLASK_APP=webserver FLASK_ENV=production FLASK_RUN_PORT=5000 flask run --host=0.0.0.0
