@@ -5,14 +5,11 @@ on:
     pull_request:
       branches:
         - master
+
 name: deploy
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "music-composition-api"
-          heroku_email: ${{secrets.HEROKU_EMAIL}}
-          usedocker: true
+
+build:
+  docker:
+    web: Dockerfile
+run:
+  web: bundle exec puma -C config/puma.rb
