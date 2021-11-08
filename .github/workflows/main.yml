@@ -10,6 +10,7 @@ on:
 env:
   HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
   APP_NAME: ${{ 'music-composition-api' }}
+  HEROKU_API_EMAIL: ${{ secrets.HEROKU_API_EMAIL }}
 
 jobs:
       
@@ -17,16 +18,17 @@ jobs:
     name: Deploy to Heroku
     runs-on: ubuntu-latest
     steps:
-      # Clone the repository
-      - name: Checkout
-      - uses: actions/checkout@v1
+
+    # Clone the repository
+    - name: Checkout
+    - uses: actions/checkout@v1
 
     # Build Docker image
-      - name: Docker build
-        run: docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
+    - name: Docker build
+      run: docker login --username=$HEROKU_API_EMAIL --password=$HEROKU_API_KEY registry.heroku.com
   
-       # Push the Docker image to Heroku Container Registry
-      - name: Publish
-        run: |
-          heroku container:push web -a $APP_NAME
-          heroku container:release web -a $APP_NAME
+    # Push the Docker image to Heroku Container Registry
+    - name: Publish
+      run: |
+        heroku container:push web -a $APP_NAME
+        heroku container:release web -a $APP_NAME
