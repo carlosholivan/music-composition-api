@@ -12,7 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Check out repository code
-        run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "music-composition-api"
