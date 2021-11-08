@@ -5,11 +5,28 @@ on:
     pull_request:
       branches:
         - master
+  
+#set environment variables 
+env:
+  HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+  APP_NAME: ${{ 'music-composition-api' }}
 
-name: deploy
+jobs:
+      
+  deploy:
+    name: Deploy to Heroku
+    runs-on: ubuntu-latest
+    steps:
+      # Clone the repository
+      - name: Checkout
+      - uses: actions/checkout@v1
 
-build:
-  docker:
-    web: Dockerfile
-run:
-  web: bundle exec puma -C config/puma.rb
+    # Build Docker image
+      - name: Docker build
+        run: docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
+  
+       # Push the Docker image to Heroku Container Registry
+      - name: Publish
+        run: |
+          heroku container:push web -a $APP_NAME
+          heroku container:release web -a $APP_NAME
