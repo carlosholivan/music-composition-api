@@ -13,7 +13,13 @@ env:
   HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
 
 jobs:
-      
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Check-out your repository.
+      - name: Checkout
+        uses: actions/checkout@v1
+
   deploy:
     name: Deploy to Heroku
     runs-on: ubuntu-latest
