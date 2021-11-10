@@ -4,7 +4,6 @@ USER root
 
 RUN sudo apt-get update
 RUN sudo apt-get install -y libsndfile-dev ffmpeg libasound-dev libjack0 libjack-dev
-RUN sudo apt-get install npm
 
 WORKDIR /usr/src/app
 
