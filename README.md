@@ -3,8 +3,17 @@
 </div>
 <br>
 
+Music Composition API, A collection of Deep Learning for Music Generation models deployed as a REST API with Flask and deployed in Docker to Heroku.
 
-Music Composition API, A collection of Deep Learning for Music Generation models deployed as an API with Flask.
+[<img src="https://img.shields.io/badge/Flask-black.svg?style=flat&logo=flask&logoColor=white" />]()
+
+[<img src="https://img.shields.io/badge/Docker-blue.svg?style=flat&logo=docker&logoColor=white" />]()
+
+[<img src="https://img.shields.io/badge/Heroku-blueviolet.svg?style=flat&logo=heroku&logoColor=white" />]()
+
+## Implemented Models
+
+- MusicVAE: drums
 
 ## TODOs
 
