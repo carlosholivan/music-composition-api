@@ -129,7 +129,7 @@ def create_app(
             
                 resp = send_file(midi_path,
                                 mimetype='audio/midi',
-                                as_attachement=True
+                                as_attachment=True
                                 )
 
                 # Delete temporary directory            
