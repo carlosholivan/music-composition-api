@@ -41,11 +41,14 @@ jobs:
       - name: Install music-composition-api
         shell: bash -l {0}
         run: python -m pip install -e .[tests]
+      
+      - name: Run pytest
+        shell: bash -l {0}
+        run: pytest
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage.xml
           directory: ./coverage/reports/
           flags: unittests
