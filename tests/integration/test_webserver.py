@@ -4,12 +4,7 @@
 """
 
 # General modules
-import json
-import os
 import pytest
-import numpy as np
-from pathlib import Path
-import random
 
 # Modules in this package
 import webserver
@@ -41,9 +36,20 @@ def _assert_valid_response(
     assert response.status_code == 201
 
 
-def test_compose_musicvae(clients):
+def test_compose_musicvae_midi(clients):
     post_data = {
-        "command_name": "music_vae"
+        "command_name": "music_vae",
+        "params": "midi"
+    }
+    for client in clients:
+        response = client.post("/api/command", json=post_data)
+        _assert_valid_response(response)
+
+
+def test_compose_musicvae_seq(clients):
+    post_data = {
+        "command_name": "music_vae",
+        "params": "note_seq"
     }
     for client in clients:
         response = client.post("/api/command", json=post_data)

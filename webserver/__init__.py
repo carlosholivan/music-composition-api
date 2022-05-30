@@ -17,7 +17,7 @@ import weakref
 import tempfile
 
 # Flask modules
-from flask import Flask, jsonify, request, safe_join, send_file
+from flask import Flask, jsonify, request, safe_join, send_file, make_response
 from flask.logging import create_logger
 from flask_cors import cross_origin
 
@@ -120,21 +120,31 @@ def create_app(
                 generated_sample_sequences = sample("cat-drums_2bar_small.lokl",
                                                     num_steps_per_sample)
 
-                # Save MIDI file in a temp directory
-                midi_filename = 'midi_filename.mid'
-                #log.info("Creating MIDI file {} from {}...".format(midi_filename, temp_path))
-                midi_path = safe_join(temp_path, midi_filename)
-                note_seq.sequence_proto_to_midi_file(generated_sample_sequences[0], midi_path)
-                #log.info('Saved MIDI file in {}'.format(midi_path))
-            
-                resp = send_file(midi_path,
-                                mimetype='audio/midi',
-                                as_attachment=True
-                                )
+                if params["params"] == "midi":
+                    # Save MIDI file in a temp directory
+                    midi_filename = 'midi_filename.mid'
+                    #log.info("Creating MIDI file {} from {}...".format(midi_filename, temp_path))
+                    midi_path = safe_join(temp_path, midi_filename)
+                    note_seq.sequence_proto_to_midi_file(generated_sample_sequences[0], midi_path)
+                    #log.info('Saved MIDI file in {}'.format(midi_path))
+                
+                    resp = send_file(midi_path,
+                                    mimetype='audio/midi',
+                                    as_attachment=True
+                                    )
 
-                # Delete temporary directory            
-                file_remover.cleanup_once_done(resp, temp_path)
-                return resp, 201
+                    # Delete temporary directory            
+                    file_remover.cleanup_once_done(resp, temp_path)
+                    return resp, 201
+
+                elif params["params"] == "note_seq":
+                    breakpoint()
+                    # serialize track 1 protobuf to str
+                    tracks = []
+                    for track in generated_sample_sequences:
+                        track_note_seq = track.SerializeToString()
+                        tracks.append(track_note_seq)
+                    return make_response(generated_sample_sequences[0]), 201
 
         except Exception as e:
             app.logger.error(e)
