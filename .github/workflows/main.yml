@@ -37,6 +37,9 @@ jobs:
         run: |
             conda info -a
             conda list
+      
+      - name: apt-get
+        run: sudo apt-get install -y libsndfile-dev ffmpeg libasound-dev libjack0 libjack-dev
 
       - name: Install music-composition-api
         shell: bash -l {0}
