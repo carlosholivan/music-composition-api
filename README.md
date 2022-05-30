@@ -11,6 +11,8 @@ Music Composition API, A collection of Deep Learning for Music Generation models
 
 [<img src="https://img.shields.io/badge/Heroku-blueviolet.svg?style=flat&logo=heroku&logoColor=white" />]()
 
+[![codecov.io](https://codecov.io/github/carlosholivan/music-composition-api/coverage.svg?branch=master)](https://codecov.io/github/carlosholivan/music-composition-api?branch=master)
+
 ## Implemented Models
 
 - MusicVAE: drums
