@@ -40,6 +40,7 @@ jobs:
 
       - name: Install music-composition-api
         shell: bash -l {0}
+        run: cd..
         run: python -m pip install -e .[tests]
 
       - name: Upload coverage to Codecov
