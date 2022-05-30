@@ -19,5 +19,6 @@ setuptools.setup(name='music-composition-api',
       classifiers=[
           "Programming Language :: Python :: 3",
           ],
+      install_requires=requirements
       
       )
