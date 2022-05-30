@@ -1,5 +1,5 @@
 magenta
-Flask==1.1.2
+Flask==2.0.1
 Flask-Cors==3.0.9
 glob2==0.7
 midi2audio==0.1.1
