@@ -7,3 +7,4 @@ music21==6.7.1
 pytest==6.2.4
 visual_midi==1.1.0
 pyFluidSynth==1.2.5
+numpy
